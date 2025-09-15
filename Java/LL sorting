@@ -23,3 +23,44 @@ class Solution {
         return head_ref;
     }
 }
+
+
+// optimal
+
+// User function Template for Java
+
+/*class Node
+    {
+        int data;
+        Node next;
+        Node(int d) {data = d; next = null; }
+    }
+    */
+class Solution {
+    public static Node insertionSort(Node head_ref) {
+        if(head_ref==null &&head_ref.next==null){
+            return head_ref;
+            
+        }
+        Node dummy=new Node(-1);
+       Node curr = head_ref;
+
+        while (curr != null) {
+            Node nextNode = curr.next; 
+            Node prev = dummy;
+            while (prev.next != null && prev.next.data < curr.data) {
+                prev = prev.next;
+            }
+            curr.next = prev.next;
+            prev.next = curr;
+
+            curr = nextNode;
+        }
+
+        return dummy.next;
+        
+        
+        
+
+    }
+}
